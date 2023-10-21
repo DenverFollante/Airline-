@@ -20,7 +20,7 @@ pilot_name VARCHAR (255),
 flight_status VARCHAR (255)
 );
 
-LOAD DATA LOCAL INFILE 'C:/Users/denve/Downloads/archive (3)/Airline Dataset Updated - v1.csv'
+LOAD DATA LOCAL INFILE 'Airline Dataset Updated - v1.csv'
 INTO TABLE airlinedata
 FIELDS TERMINATED BY ','
 IGNORE 1 LINES;
@@ -29,8 +29,8 @@ SHOW GLOBAL VARIABLES LIKE 'local_infile';
 SET GLOBAL local_infile = 'ON';
 
 -------------------------------------------------------------------------------------------------
--- Data Cleaning process
--- Describing the table will give the field type and to determine its key
+-- Data Cleaning Process
+-- Describing the table will give the field type and determine its key
 DESCRIBE airlinedata
 SELECT * FROM airlinedata
 
@@ -90,7 +90,7 @@ Female	49020
 Male	49597
 
 
--- Distribution of passengers accross genders
+-- Distribution of passengers across genders
 
 SELECT gender,
 	COUNT(gender)/98617 * 100 as Gender_percentage
@@ -241,7 +241,7 @@ FEB	7653
 DEC	7924
 APR	7958
 
--- Determine the top 3 months of the year has the highest number of passenger
+-- Determine the top 3 months of the year that have the highest number of passenger
 SELECT
 	EXTRACT(MONTH FROM departure_date) AS MONTH_,
 	COUNT(passenger_id) AS total_passengers
